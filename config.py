@@ -3,6 +3,7 @@ INIT_POP_SIZE = 40
 ITER_GP = 100
 ITER_RUN = 30
 MAX_DEPTH = 4
+RANK_SMOOTHING = 1.5
 SEED_SPLIT = 261109
 
 # for generating formulas as trees 

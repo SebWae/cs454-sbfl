@@ -34,21 +34,24 @@ if __name__ == "__main__":
         k = round(0.7 * len(bugs))
         train += bugs[:k]
         val += bugs[k:]
-    print(train)
-    print(val)
 
     # load training bugs
     bugs = load_bugs(train)
 
     # initialize population of formulas
     pop = init_pop(INIT_POP_SIZE, OPERANDS, OPERATORS, max_depth=MAX_DEPTH)
-    fits = eval_pop(pop, bugs)
-    # lexicographic key for ranking: best acc@1 first, then lowest wef
-    order = sorted(range(len(pop)), key=lambda i: (-fits[i]["acc1"], fits[i]["wef"]))
-    print(order)
-    # for t in pop[:6]:
-    #     print(t)
 
+    # evaluate current population
+    fits = eval_pop(pop, bugs, mode="linear", s=1.5)
+
+    # obtain probabilities
+    probs = [f["prob"] for f in fits]
+
+    # sample parents according to probabilities
+    for _ in range(10):
+        a, b = random.choices(pop, weights=probs, k=2)
+        print("Parent A: ", a)
+        print("Parent B: ", b)
 
 
     # for _ in range(ITER_RUN):

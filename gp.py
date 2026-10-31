@@ -5,7 +5,11 @@ import os
 import pandas as pd
 import random
 
-from config import ARITY, DATA_DIR
+from config import (
+    ARITY, 
+    DATA_DIR, 
+    RANK_SMOOTHING,
+)
 
 
 class Node:
@@ -147,16 +151,57 @@ def buggy_rank(tree, bug):
     return min(ranks) if ranks else len(scores)   # best-ranked buggy method
 
 
-def eval_pop(population, bugs):
+def assign_ranks(results):
+    """Rank 0 = worst, mu-1 = best. Order: acc@1 (higher better), then wef (lower better).
+    Individuals with identical (acc1, wef) share the average of the ranks they span."""
+    mu = len(results)
+    key = lambda i: (results[i]["acc1"], -results[i]["wef"])
+    order = sorted(range(mu), key=key)              # worst -> best
+    ranks = [0.0] * mu
+    pos = 0
+    while pos < mu:
+        end = pos
+        while end + 1 < mu and key(order[end + 1]) == key(order[pos]):
+            end += 1
+        avg = (pos + end) / 2
+        for k in range(pos, end + 1):
+            ranks[order[k]] = avg
+        pos = end + 1
+    return ranks
+
+
+def selection_probs(ranks, mode="linear", s=RANK_SMOOTHING):
+    mu = len(ranks)
+    if mu == 1:
+        return [1.0]
+    if mode == "linear":
+        if not 1.0 <= s <= 2.0:
+            raise ValueError("s must be in [1, 2]")
+        total = sum(ranks)                           # = mu*(mu-1)/2, tie-averaging preserves it
+        return [((2 - s) / mu) + ((r * (s - 1)) / total) for r in ranks]
+    elif mode == "exponential":
+        w = [1 - math.exp(-r) for r in ranks]
+        total = sum(w)
+        return [x / total for x in w]
+    raise ValueError(f"Unknown mode: {mode}")
+
+
+def eval_pop(population, bugs, mode="linear", s=RANK_SMOOTHING):
     results = []
     for tree in population:
-        ranks = [buggy_rank(tree, bug) for bug in bugs]
-        top1 = sum(r == 1 for r in ranks)
+        ranks_per_bug = [buggy_rank(tree, bug) for bug in bugs]
+        top1 = sum(r == 1 for r in ranks_per_bug)
         results.append({
             "acc1": top1,
             "acc1_pct": 100.0 * top1 / len(bugs),
-            "wef": sum(ranks) / len(ranks),
+            "wef": sum(ranks_per_bug) / len(ranks_per_bug),
         })
+
+    ranks = assign_ranks(results)
+    probs = selection_probs(ranks, mode, s)
+    for res, r, p in zip(results, ranks, probs):
+        res["rank"] = r
+        res["prob"] = p
     return results
 
 
