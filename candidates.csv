@@ -1,0 +1,2 @@
+run,formula,python_expr,train_acc1,train_wef,val_acc1,val_wef
+0,"div(mul(add(div(np, ep), mul(ef, np)), add(mul(ef, np), sub(ep, np))), add(sub(div(ep, np), 1), add(ep, add(ep, nf))))","div(((div(np, ep) + (ef * np)) * ((ef * np) + (ep - np))), ((div(ep, np) - 1.0) + (ep + (ep + nf))))",31,7.369,14,13.486

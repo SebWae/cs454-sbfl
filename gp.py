@@ -1,3 +1,4 @@
+import copy
 import json
 import math 
 import numpy as np
@@ -7,7 +8,12 @@ import random
 
 from config import (
     ARITY, 
+    CROSSOVER_RATE,
     DATA_DIR, 
+    MAX_DEPTH,
+    MUTATE_PROB,
+    OPERANDS,
+    OPERATORS,
     RANK_SMOOTHING,
 )
 
@@ -205,14 +211,88 @@ def eval_pop(population, bugs, mode="linear", s=RANK_SMOOTHING):
     return results
 
 
+def _collect_nodes(root):
+    """Return a list of (parent, child_index, node) for every non-root node,
+    plus the root itself as (None, None, root)."""
+    nodes = [(None, None, root)]
+    stack = [root]
+    while stack:
+        parent = stack.pop()
+        for i, child in enumerate(parent.children):
+            nodes.append((parent, i, child))
+            stack.append(child)
+    return nodes
 
 
-# def rank_select():
+def _depth(node):
+    return 0 if not node.children else 1 + max(_depth(c) for c in node.children)
 
 
-# def create_offsprings():
+def create_offsprings(parent_a, parent_b, crossover_rate=CROSSOVER_RATE, max_depth=MAX_DEPTH):
+    """Single-point subtree crossover.
+
+    Picks one cutpoint in each parent and swaps the subtrees below them.
+    Returns two new trees; the parents are left untouched.
+    If max_depth is given, a swap that would produce a tree deeper than
+    max_depth is rejected and copies of the parents are returned instead.
+    """
+    child_a = copy.deepcopy(parent_a)
+    child_b = copy.deepcopy(parent_b)
+
+    if random.random() >= crossover_rate:
+        return child_a, child_b
+
+    pa, ia, na = random.choice(_collect_nodes(child_a))
+    pb, ib, nb = random.choice(_collect_nodes(child_b))
+
+    # swap the subtrees
+    if pa is None and pb is None:          # both cutpoints at the root
+        child_a, child_b = nb, na
+    elif pa is None:                       # cut at the root of A only
+        pb.children[ib] = na
+        child_a = nb
+    elif pb is None:                       # cut at the root of B only
+        pa.children[ia] = nb
+        child_b = na
+    else:
+        pa.children[ia], pb.children[ib] = nb, na
+
+    if max_depth is not None and (_depth(child_a) > max_depth or _depth(child_b) > max_depth):
+        return copy.deepcopy(parent_a), copy.deepcopy(parent_b)
+
+    return child_a, child_b
 
 
-# def mutate_offsprings():
+def _collect_nodes_with_depth(root):
+    """Return a list of (parent, child_index, node, depth); the root has parent None."""
+    nodes = [(None, None, root, 0)]
+    stack = [(root, 0)]
+    while stack:
+        parent, d = stack.pop()
+        for i, child in enumerate(parent.children):
+            nodes.append((parent, i, child, d + 1))
+            stack.append((child, d + 1))
+    return nodes
 
 
+def mutate(child, p=MUTATE_PROB, max_depth=MAX_DEPTH, operands=OPERANDS, operators=OPERATORS):
+    """Subtree replacement (headless chicken) mutation.
+
+    With probability p, pick a random node and replace the subtree below it
+    with a newly generated random subtree. The new subtree is grown so that
+    the resulting tree never exceeds max_depth (root = depth 0).
+    Returns the (possibly new) root, so always use the return value.
+    """
+    if random.random() >= p:
+        return child
+
+    parent, idx, _, node_depth = random.choice(_collect_nodes_with_depth(child))
+
+    # the new subtree starts at node_depth and may reach at most max_depth
+    start = min(node_depth, max_depth)
+    new_subtree = _random_tree(start, max_depth, operands, operators, "grow")
+
+    if parent is None:                 # the cutpoint was the root
+        return new_subtree
+    parent.children[idx] = new_subtree
+    return child
