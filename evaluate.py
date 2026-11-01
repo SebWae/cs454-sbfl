@@ -5,7 +5,7 @@ import pandas as pd
 
 from best import div
 from config import CSV_PATH, DATA_DIR
-from gp import load_bug            
+from utils import load_bug            
 
 
 def score_table(bug):
@@ -75,10 +75,11 @@ if __name__ == "__main__":
     pd.set_option("display.max_colwidth", 70, "display.width", 200)
 
     # 1. Top of the ranking for one bug: the buggy method should be near the top
-    print(tables["Lang-1"].head(10))
+    bug_prefix = "Math-9"
+    print(tables[f"{bug_prefix}"].head(10))
 
     # 2. Only the buggy method(s) of that bug
-    t = tables["Lang-1"]
+    t = tables[f"{bug_prefix}"]
     print(t[t["is_buggy"]])
 
     # 3. A bug the formula got wrong, to see why
