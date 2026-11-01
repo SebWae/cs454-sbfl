@@ -75,58 +75,6 @@ def init_pop(pop_size, operands, operators, max_depth):
     return population
 
 
-def get_spectrum(coverage_df, failing_tests):
-    """
-    Convert coverage data and failed test results to program execution spectrum
-
-    Return: (e_p, n_p, e_f, n_f)
-        - e_p: the number of passing tests that cover each elements
-        - n_p: the number of passing tests that do not cover each elements
-        - e_f: the number of failing tests that cover each elements
-        - n_f: the number of failing tests that do not cover each elements
-    """
-    X = coverage_df.values.transpose()
-
-    is_failing = np.array([test in failing_tests for test in coverage_df.columns])
-
-    e_p = X[~is_failing].sum(axis=0)
-    e_f = X[is_failing].sum(axis=0)
-    n_p = np.sum(~is_failing) - e_p
-    n_f = np.sum(is_failing) - e_f
-
-    return e_p, n_p, e_f, n_f
-    
-
-def load_bug(bug_id, data_dir=DATA_DIR):
-    with open(os.path.join(data_dir, f"{bug_id}.json")) as f:
-        bug_info = json.load(f)
-    coverage = pd.read_pickle(os.path.join(data_dir, f"{bug_id}-cov.pkl"))
-
-    # get_spectrum returns (e_p, n_p, e_f, n_f) -- note the order
-    e_p, n_p, e_f, n_f = get_spectrum(coverage, bug_info["failing_tests"])
-
-    # statement -> method, then keep the unique spectra tuples per method
-    # (max aggregation only needs the distinct tuples, which saves a lot of work)
-    method_spectra = {}
-    for line, ep, np_, ef, nf in zip(coverage.index, e_p.tolist(), n_p.tolist(),
-                                     e_f.tolist(), n_f.tolist()):
-        method = line.rsplit(":", 1)[0]          # strip the ":<line number>"
-        method_spectra.setdefault(method, set()).add((ep, ef, np_, nf))
-
-    buggy_methods = {l.rsplit(":", 1)[0] for l in bug_info["buggy_lines"]}
-    buggy_methods &= method_spectra.keys()       # guard against missing methods
-
-    return {
-        "id": bug_id,
-        "methods": {m: list(s) for m, s in method_spectra.items()},
-        "buggy": buggy_methods,
-    }
-
-
-def load_bugs(bug_ids):
-    return [load_bug(b) for b in bug_ids]
-
-
 def eval_tree(node, env):
     v = node.value
     if not node.children:

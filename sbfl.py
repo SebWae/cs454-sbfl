@@ -5,8 +5,8 @@ import random
 from tqdm import tqdm
 
 from config import POP_SIZE, ITER_GP, ITER_RUN, MAX_DEPTH, OPERANDS, OPERATORS
-from gp import create_offsprings, eval_pop, init_pop, load_bugs, mutate
-from utils import best_of, make_split, to_python
+from gp import create_offsprings, eval_pop, init_pop, mutate
+from utils import best_of, load_bugs, make_split, to_python
 
 P_CROSS, P_MUT, N_ELITE = 0.9, 0.1, 1
 RESULTS_CSV = "candidates.csv"
