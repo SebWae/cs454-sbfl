@@ -6,6 +6,7 @@ MAX_DEPTH = 4
 MUTATE_PROB = 0.08
 RANK_SMOOTHING = 1.5
 SEED_SPLIT = 261109
+SELECTION_MODE = "exponential"
 
 # paths
 CSV_PATH = "candidates.csv"

@@ -1,20 +1,16 @@
 import copy
-import json
 import math 
-import numpy as np
-import os
-import pandas as pd
 import random
 
 from config import (
     ARITY, 
     CROSSOVER_RATE,
-    DATA_DIR, 
     MAX_DEPTH,
     MUTATE_PROB,
     OPERANDS,
     OPERATORS,
     RANK_SMOOTHING,
+    SELECTION_MODE,
 )
 
 
@@ -124,7 +120,7 @@ def assign_ranks(results):
     return ranks
 
 
-def selection_probs(ranks, mode="linear", s=RANK_SMOOTHING):
+def selection_probs(ranks, mode=SELECTION_MODE, s=RANK_SMOOTHING):
     mu = len(ranks)
     if mu == 1:
         return [1.0]
