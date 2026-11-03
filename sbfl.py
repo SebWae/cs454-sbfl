@@ -19,7 +19,7 @@ if __name__ == "__main__":
 
     write_header = not os.path.exists(RESULTS_CSV)
     fields = ["run", "formula", "python_expr", "train_acc1", "train_wef",
-              "val_acc1", "val_wef"]
+              "val_acc1", "val_wef", "select_mode"]
 
     for run in range(ITER_RUN):
         random.seed(run)                      # reproducible per run
