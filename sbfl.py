@@ -4,7 +4,7 @@ import os
 import random
 from tqdm import tqdm
 
-from config import POP_SIZE, ITER_GP, ITER_RUN, MAX_DEPTH, OPERANDS, OPERATORS
+from config import POP_SIZE, ITER_GP, ITER_RUN, MAX_DEPTH, OPERANDS, OPERATORS, SELECTION_MODE
 from gp import create_offsprings, eval_pop, init_pop, mutate
 from utils import best_of, load_bugs, make_split, to_python
 
@@ -66,6 +66,7 @@ if __name__ == "__main__":
             "train_wef": round(best_fit["wef"], 3),
             "val_acc1": val_fit["acc1"],
             "val_wef": round(val_fit["wef"], 3),
+            "select_mode": SELECTION_MODE,
         }
         with open(RESULTS_CSV, "a", newline="") as f:
             w = csv.DictWriter(f, fieldnames=fields)

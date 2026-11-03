@@ -1,31 +1,61 @@
-run,formula,python_expr,train_acc1,train_wef,val_acc1,val_wef
-0,"div(mul(add(div(np, ep), mul(ef, np)), add(mul(ef, np), sub(ep, np))), add(sub(div(ep, np), 1), add(ep, add(ep, nf))))","div(((div(np, ep) + (ef * np)) * ((ef * np) + (ep - np))), ((div(ep, np) - 1.0) + (ep + (ep + nf))))",31,7.369,14,13.486
-1,"mul(sqrt(div(add(nf, np), sqrt(np))), div(div(sqrt(nf), mul(ef, np)), sub(mul(nf, ef), add(nf, nf))))","((abs(div((nf + np), (abs(np) ** 0.5))) ** 0.5) * div(div((abs(nf) ** 0.5), (ef * np)), ((nf * ef) - (nf + nf))))",31,8.083,14,10.2
-2,"sqrt(mul(sub(div(1, ef), add(ef, 1)), div(div(np, ef), add(np, ef))))","(abs(((div(1.0, ef) - (ef + 1.0)) * div(div(np, ef), (np + ef)))) ** 0.5)",30,10.619,13,11.657
-3,"div(mul(mul(np, mul(np, ef)), mul(np, mul(ef, ef))), sqrt(div(sqrt(np), sub(nf, 1))))","div(((np * (np * ef)) * (np * (ef * ef))), (abs(div((abs(np) ** 0.5), (nf - 1.0))) ** 0.5))",29,8.369,15,8.314
-4,"mul(mul(add(np, add(np, ef)), ef), div(ef, mul(1, sqrt(ep))))","(((np + (np + ef)) * ef) * div(ef, (1.0 * (abs(ep) ** 0.5))))",30,5.131,17,7.229
-5,"div(add(mul(mul(np, np), np), mul(mul(np, np), div(np, ef))), mul(sub(sqrt(ef), nf), mul(div(np, ef), add(nf, 1))))","div((((np * np) * np) + ((np * np) * div(np, ef))), (((abs(ef) ** 0.5) - nf) * (div(np, ef) * (nf + 1.0))))",31,23.845,14,12.057
-6,"add(mul(mul(np, ef), div(ef, sqrt(ep))), mul(mul(ef, sub(ef, ef)), sub(sub(np, nf), nf)))","(((np * ef) * div(ef, (abs(ep) ** 0.5))) + ((ef * (ef - ef)) * ((np - nf) - nf)))",30,5.131,17,7.229
-7,"mul(sqrt(add(ef, div(np, 1))), add(ef, add(ef, mul(nf, ef))))","((abs((ef + div(np, 1.0))) ** 0.5) * (ef + (ef + (nf * ef))))",29,8.119,14,10.829
-8,"mul(mul(add(div(np, ep), np), add(np, mul(np, ef))), sub(mul(div(ef, nf), mul(np, ef)), div(ep, add(np, np))))","(((div(np, ep) + np) * (np + (np * ef))) * ((div(ef, nf) * (np * ef)) - div(ep, (np + np))))",31,9.536,14,10.714
-9,"div(sqrt(mul(mul(ef, ef), add(1, 1))), add(add(nf, ep), div(div(nf, 1), sub(nf, ef))))","div((abs(((ef * ef) * (1.0 + 1.0))) ** 0.5), ((nf + ep) + div(div(nf, 1.0), (nf - ef))))",31,4.774,15,7.029
-10,"div(mul(mul(sqrt(ef), np), sub(add(np, ef), sub(ep, np))), sqrt(sqrt(sub(ef, nf))))","div((((abs(ef) ** 0.5) * np) * ((np + ef) - (ep - np))), (abs((abs((ef - nf)) ** 0.5)) ** 0.5))",30,16.714,13,16.829
-11,"div(sub(sub(mul(ef, 1), sub(1, ef)), sqrt(sub(nf, nf))), sqrt(add(add(nf, ep), add(ep, nf))))","div((((ef * 1.0) - (1.0 - ef)) - (abs((nf - nf)) ** 0.5)), (abs(((nf + ep) + (ep + nf))) ** 0.5))",31,5.405,17,7.0
-12,"div(ef, sqrt(div(div(ep, 1), div(ef, 1))))","div(ef, (abs(div(div(ep, 1.0), div(ef, 1.0))) ** 0.5))",30,5.631,15,6.743
-13,"mul(div(ef, add(div(nf, ef), div(ep, ef))), div(add(add(ep, 1), add(ep, ef)), add(add(1, ep), div(1, ef))))","(div(ef, (div(nf, ef) + div(ep, ef))) * div(((ep + 1.0) + (ep + ef)), ((1.0 + ep) + div(1.0, ef))))",32,4.857,15,6.886
-14,"add(mul(div(sqrt(1), sub(ef, 1)), add(add(np, nf), ef)), mul(mul(div(ef, ef), add(ef, ef)), mul(div(ef, ef), add(ef, ef))))","((div((abs(1.0) ** 0.5), (ef - 1.0)) * ((np + nf) + ef)) + ((div(ef, ef) * (ef + ef)) * (div(ef, ef) * (ef + ef))))",31,5.06,14,7.0
-15,"div(mul(div(np, add(1, ep)), div(np, add(nf, ep))), sub(ef, sqrt(nf)))","div((div(np, (1.0 + ep)) * div(np, (nf + ep))), (ef - (abs(nf) ** 0.5)))",32,42.655,12,13.0
-16,"mul(div(div(np, add(nf, ep)), ep), div(add(sub(ef, 1), sub(ef, nf)), nf))","(div(div(np, (nf + ep)), ep) * div(((ef - 1.0) + (ef - nf)), nf))",32,34.952,14,12.371
-17,"div(ef, sub(sqrt(add(ep, nf)), div(ep, add(ep, np))))","div(ef, ((abs((ep + nf)) ** 0.5) - div(ep, (ep + np))))",31,4.798,15,6.829
-18,"mul(add(add(ep, add(ef, ep)), add(ef, add(ep, np))), div(div(mul(ef, 1), add(nf, ep)), sqrt(1)))","(((ep + (ef + ep)) + (ef + (ep + np))) * div(div((ef * 1.0), (nf + ep)), (abs(1.0) ** 0.5)))",31,4.774,15,6.829
-19,"div(ef, div(sqrt(add(ep, nf)), sqrt(ef)))","div(ef, div((abs((ep + nf)) ** 0.5), (abs(ef) ** 0.5)))",31,5.548,15,7.057
-20,"mul(mul(div(ef, add(np, ef)), ef), sub(mul(div(ef, ep), 1), div(div(ef, np), add(np, ef))))","((div(ef, (np + ef)) * ef) * ((div(ef, ep) * 1.0) - div(div(ef, np), (np + ef))))",31,7.381,15,7.057
-21,"add(div(mul(ef, mul(1, np)), 1), div(add(mul(np, nf), ef), sub(mul(1, ef), 1)))","(div((ef * (1.0 * np)), 1.0) + div(((np * nf) + ef), ((1.0 * ef) - 1.0)))",31,6.238,14,10.6
-22,"mul(sqrt(div(mul(ef, ef), ep)), mul(div(mul(ef, nf), nf), mul(ef, np)))","((abs(div((ef * ef), ep)) ** 0.5) * (div((ef * nf), nf) * (ef * np)))",32,6.095,17,7.429
-23,"div(mul(add(np, mul(ef, ef)), mul(div(ef, np), 1)), add(ep, nf))","div(((np + (ef * ef)) * (div(ef, np) * 1.0)), (ep + nf))",31,4.786,15,7.343
-24,"div(div(sqrt(ef), div(1, sqrt(ef))), div(sqrt(ep), sqrt(ef)))","div(div((abs(ef) ** 0.5), div(1.0, (abs(ef) ** 0.5))), div((abs(ep) ** 0.5), (abs(ef) ** 0.5)))",30,5.607,15,6.743
-25,"mul(add(div(add(1, ef), div(ep, np)), np), add(div(mul(1, ef), 1), ef))","((div((1.0 + ef), div(ep, np)) + np) * (div((1.0 * ef), 1.0) + ef))",30,6.702,15,10.886
-26,"sub(div(mul(ef, ef), add(ep, nf)), sqrt(add(ef, nf)))","(div((ef * ef), (ep + nf)) - (abs((ef + nf)) ** 0.5))",30,4.857,15,6.829
-27,"add(mul(div(ef, sqrt(ep)), sqrt(ef)), add(sqrt(div(ef, nf)), sqrt(div(ef, nf))))","((div(ef, (abs(ep) ** 0.5)) * (abs(ef) ** 0.5)) + ((abs(div(ef, nf)) ** 0.5) + (abs(div(ef, nf)) ** 0.5)))",32,6.798,15,6.743
-28,"add(add(sub(add(nf, np), div(ef, 1)), add(mul(nf, ef), mul(np, ef))), mul(sqrt(mul(ef, 1)), add(mul(np, 1), mul(np, nf))))","((((nf + np) - div(ef, 1.0)) + ((nf * ef) + (np * ef))) + ((abs((ef * 1.0)) ** 0.5) * ((np * 1.0) + (np * nf))))",30,8.131,13,10.6
-29,"mul(mul(add(nf, 1), mul(mul(np, ef), add(1, 1))), sub(sqrt(mul(np, ef)), nf))",(((nf + 1.0) * ((np * ef) * (1.0 + 1.0))) * ((abs((np * ef)) ** 0.5) - nf)),30,7.393,14,10.2
+run,formula,python_expr,train_acc1,train_wef,val_acc1,val_wef,select_mode
+0,"div(mul(add(div(np, ep), mul(ef, np)), add(mul(ef, np), sub(ep, np))), add(sub(div(ep, np), 1), add(ep, add(ep, nf))))","div(((div(np, ep) + (ef * np)) * ((ef * np) + (ep - np))), ((div(ep, np) - 1.0) + (ep + (ep + nf))))",31,7.369,14,13.486,linear
+1,"mul(sqrt(div(add(nf, np), sqrt(np))), div(div(sqrt(nf), mul(ef, np)), sub(mul(nf, ef), add(nf, nf))))","((abs(div((nf + np), (abs(np) ** 0.5))) ** 0.5) * div(div((abs(nf) ** 0.5), (ef * np)), ((nf * ef) - (nf + nf))))",31,8.083,14,10.2,linear
+2,"sqrt(mul(sub(div(1, ef), add(ef, 1)), div(div(np, ef), add(np, ef))))","(abs(((div(1.0, ef) - (ef + 1.0)) * div(div(np, ef), (np + ef)))) ** 0.5)",30,10.619,13,11.657,linear
+3,"div(mul(mul(np, mul(np, ef)), mul(np, mul(ef, ef))), sqrt(div(sqrt(np), sub(nf, 1))))","div(((np * (np * ef)) * (np * (ef * ef))), (abs(div((abs(np) ** 0.5), (nf - 1.0))) ** 0.5))",29,8.369,15,8.314,linear
+4,"mul(mul(add(np, add(np, ef)), ef), div(ef, mul(1, sqrt(ep))))","(((np + (np + ef)) * ef) * div(ef, (1.0 * (abs(ep) ** 0.5))))",30,5.131,17,7.229,linear
+5,"div(add(mul(mul(np, np), np), mul(mul(np, np), div(np, ef))), mul(sub(sqrt(ef), nf), mul(div(np, ef), add(nf, 1))))","div((((np * np) * np) + ((np * np) * div(np, ef))), (((abs(ef) ** 0.5) - nf) * (div(np, ef) * (nf + 1.0))))",31,23.845,14,12.057,linear
+6,"add(mul(mul(np, ef), div(ef, sqrt(ep))), mul(mul(ef, sub(ef, ef)), sub(sub(np, nf), nf)))","(((np * ef) * div(ef, (abs(ep) ** 0.5))) + ((ef * (ef - ef)) * ((np - nf) - nf)))",30,5.131,17,7.229,linear
+7,"mul(sqrt(add(ef, div(np, 1))), add(ef, add(ef, mul(nf, ef))))","((abs((ef + div(np, 1.0))) ** 0.5) * (ef + (ef + (nf * ef))))",29,8.119,14,10.829,linear
+8,"mul(mul(add(div(np, ep), np), add(np, mul(np, ef))), sub(mul(div(ef, nf), mul(np, ef)), div(ep, add(np, np))))","(((div(np, ep) + np) * (np + (np * ef))) * ((div(ef, nf) * (np * ef)) - div(ep, (np + np))))",31,9.536,14,10.714,linear
+9,"div(sqrt(mul(mul(ef, ef), add(1, 1))), add(add(nf, ep), div(div(nf, 1), sub(nf, ef))))","div((abs(((ef * ef) * (1.0 + 1.0))) ** 0.5), ((nf + ep) + div(div(nf, 1.0), (nf - ef))))",31,4.774,15,7.029,linear
+10,"div(mul(mul(sqrt(ef), np), sub(add(np, ef), sub(ep, np))), sqrt(sqrt(sub(ef, nf))))","div((((abs(ef) ** 0.5) * np) * ((np + ef) - (ep - np))), (abs((abs((ef - nf)) ** 0.5)) ** 0.5))",30,16.714,13,16.829,linear
+11,"div(sub(sub(mul(ef, 1), sub(1, ef)), sqrt(sub(nf, nf))), sqrt(add(add(nf, ep), add(ep, nf))))","div((((ef * 1.0) - (1.0 - ef)) - (abs((nf - nf)) ** 0.5)), (abs(((nf + ep) + (ep + nf))) ** 0.5))",31,5.405,17,7.0,linear
+12,"div(ef, sqrt(div(div(ep, 1), div(ef, 1))))","div(ef, (abs(div(div(ep, 1.0), div(ef, 1.0))) ** 0.5))",30,5.631,15,6.743,linear
+13,"mul(div(ef, add(div(nf, ef), div(ep, ef))), div(add(add(ep, 1), add(ep, ef)), add(add(1, ep), div(1, ef))))","(div(ef, (div(nf, ef) + div(ep, ef))) * div(((ep + 1.0) + (ep + ef)), ((1.0 + ep) + div(1.0, ef))))",32,4.857,15,6.886,linear
+14,"add(mul(div(sqrt(1), sub(ef, 1)), add(add(np, nf), ef)), mul(mul(div(ef, ef), add(ef, ef)), mul(div(ef, ef), add(ef, ef))))","((div((abs(1.0) ** 0.5), (ef - 1.0)) * ((np + nf) + ef)) + ((div(ef, ef) * (ef + ef)) * (div(ef, ef) * (ef + ef))))",31,5.06,14,7.0,linear
+15,"div(mul(div(np, add(1, ep)), div(np, add(nf, ep))), sub(ef, sqrt(nf)))","div((div(np, (1.0 + ep)) * div(np, (nf + ep))), (ef - (abs(nf) ** 0.5)))",32,42.655,12,13.0,linear
+16,"mul(div(div(np, add(nf, ep)), ep), div(add(sub(ef, 1), sub(ef, nf)), nf))","(div(div(np, (nf + ep)), ep) * div(((ef - 1.0) + (ef - nf)), nf))",32,34.952,14,12.371,linear
+17,"div(ef, sub(sqrt(add(ep, nf)), div(ep, add(ep, np))))","div(ef, ((abs((ep + nf)) ** 0.5) - div(ep, (ep + np))))",31,4.798,15,6.829,linear
+18,"mul(add(add(ep, add(ef, ep)), add(ef, add(ep, np))), div(div(mul(ef, 1), add(nf, ep)), sqrt(1)))","(((ep + (ef + ep)) + (ef + (ep + np))) * div(div((ef * 1.0), (nf + ep)), (abs(1.0) ** 0.5)))",31,4.774,15,6.829,linear
+19,"div(ef, div(sqrt(add(ep, nf)), sqrt(ef)))","div(ef, div((abs((ep + nf)) ** 0.5), (abs(ef) ** 0.5)))",31,5.548,15,7.057,linear
+20,"mul(mul(div(ef, add(np, ef)), ef), sub(mul(div(ef, ep), 1), div(div(ef, np), add(np, ef))))","((div(ef, (np + ef)) * ef) * ((div(ef, ep) * 1.0) - div(div(ef, np), (np + ef))))",31,7.381,15,7.057,linear
+21,"add(div(mul(ef, mul(1, np)), 1), div(add(mul(np, nf), ef), sub(mul(1, ef), 1)))","(div((ef * (1.0 * np)), 1.0) + div(((np * nf) + ef), ((1.0 * ef) - 1.0)))",31,6.238,14,10.6,linear
+22,"mul(sqrt(div(mul(ef, ef), ep)), mul(div(mul(ef, nf), nf), mul(ef, np)))","((abs(div((ef * ef), ep)) ** 0.5) * (div((ef * nf), nf) * (ef * np)))",32,6.095,17,7.429,linear
+23,"div(mul(add(np, mul(ef, ef)), mul(div(ef, np), 1)), add(ep, nf))","div(((np + (ef * ef)) * (div(ef, np) * 1.0)), (ep + nf))",31,4.786,15,7.343,linear
+24,"div(div(sqrt(ef), div(1, sqrt(ef))), div(sqrt(ep), sqrt(ef)))","div(div((abs(ef) ** 0.5), div(1.0, (abs(ef) ** 0.5))), div((abs(ep) ** 0.5), (abs(ef) ** 0.5)))",30,5.607,15,6.743,linear
+25,"mul(add(div(add(1, ef), div(ep, np)), np), add(div(mul(1, ef), 1), ef))","((div((1.0 + ef), div(ep, np)) + np) * (div((1.0 * ef), 1.0) + ef))",30,6.702,15,10.886,linear
+26,"sub(div(mul(ef, ef), add(ep, nf)), sqrt(add(ef, nf)))","(div((ef * ef), (ep + nf)) - (abs((ef + nf)) ** 0.5))",30,4.857,15,6.829,linear
+27,"add(mul(div(ef, sqrt(ep)), sqrt(ef)), add(sqrt(div(ef, nf)), sqrt(div(ef, nf))))","((div(ef, (abs(ep) ** 0.5)) * (abs(ef) ** 0.5)) + ((abs(div(ef, nf)) ** 0.5) + (abs(div(ef, nf)) ** 0.5)))",32,6.798,15,6.743,linear
+28,"add(add(sub(add(nf, np), div(ef, 1)), add(mul(nf, ef), mul(np, ef))), mul(sqrt(mul(ef, 1)), add(mul(np, 1), mul(np, nf))))","((((nf + np) - div(ef, 1.0)) + ((nf * ef) + (np * ef))) + ((abs((ef * 1.0)) ** 0.5) * ((np * 1.0) + (np * nf))))",30,8.131,13,10.6,linear
+29,"mul(mul(add(nf, 1), mul(mul(np, ef), add(1, 1))), sub(sqrt(mul(np, ef)), nf))",(((nf + 1.0) * ((np * ef) * (1.0 + 1.0))) * ((abs((np * ef)) ** 0.5) - nf)),30,7.393,14,10.2,linear
+0,"div(mul(add(div(np, ep), mul(ef, np)), add(mul(ef, np), sub(ep, np))), add(sub(div(ep, np), 1), add(ep, add(ep, nf))))","div(((div(np, ep) + (ef * np)) * ((ef * np) + (ep - np))), ((div(ep, np) - 1.0) + (ep + (ep + nf))))",31,7.369,14,13.486,exponential
+1,"mul(sqrt(div(add(nf, np), sqrt(np))), div(div(sqrt(nf), mul(ef, np)), sub(mul(nf, ef), add(nf, nf))))","((abs(div((nf + np), (abs(np) ** 0.5))) ** 0.5) * div(div((abs(nf) ** 0.5), (ef * np)), ((nf * ef) - (nf + nf))))",31,8.083,14,10.2,exponential
+2,"sqrt(mul(sub(div(1, ef), add(ef, 1)), div(div(np, ef), add(np, ef))))","(abs(((div(1.0, ef) - (ef + 1.0)) * div(div(np, ef), (np + ef)))) ** 0.5)",30,10.619,13,11.657,exponential
+3,"div(mul(mul(np, mul(np, ef)), mul(np, mul(ef, ef))), sqrt(div(sqrt(np), sub(nf, 1))))","div(((np * (np * ef)) * (np * (ef * ef))), (abs(div((abs(np) ** 0.5), (nf - 1.0))) ** 0.5))",29,8.369,15,8.314,exponential
+4,"mul(mul(add(np, add(np, ef)), ef), div(ef, mul(1, sqrt(ep))))","(((np + (np + ef)) * ef) * div(ef, (1.0 * (abs(ep) ** 0.5))))",30,5.131,17,7.229,exponential
+5,"div(add(mul(mul(np, np), np), mul(mul(np, np), div(np, ef))), mul(sub(sqrt(ef), nf), mul(div(np, ef), add(nf, 1))))","div((((np * np) * np) + ((np * np) * div(np, ef))), (((abs(ef) ** 0.5) - nf) * (div(np, ef) * (nf + 1.0))))",31,23.845,14,12.057,exponential
+6,"add(mul(mul(np, ef), div(ef, sqrt(ep))), mul(mul(ef, sub(ef, ef)), sub(sub(np, nf), nf)))","(((np * ef) * div(ef, (abs(ep) ** 0.5))) + ((ef * (ef - ef)) * ((np - nf) - nf)))",30,5.131,17,7.229,exponential
+7,"mul(sqrt(add(ef, div(np, 1))), add(ef, add(ef, mul(nf, ef))))","((abs((ef + div(np, 1.0))) ** 0.5) * (ef + (ef + (nf * ef))))",29,8.119,14,10.829,exponential
+8,"mul(mul(add(div(np, ep), np), add(np, mul(np, ef))), sub(mul(div(ef, nf), mul(np, ef)), div(ep, add(np, np))))","(((div(np, ep) + np) * (np + (np * ef))) * ((div(ef, nf) * (np * ef)) - div(ep, (np + np))))",31,9.536,14,10.714,exponential
+9,"div(sqrt(mul(mul(ef, ef), add(1, 1))), add(add(nf, ep), div(div(nf, 1), sub(nf, ef))))","div((abs(((ef * ef) * (1.0 + 1.0))) ** 0.5), ((nf + ep) + div(div(nf, 1.0), (nf - ef))))",31,4.774,15,7.029,exponential
+10,"div(mul(mul(sqrt(ef), np), sub(add(np, ef), sub(ep, np))), sqrt(sqrt(sub(ef, nf))))","div((((abs(ef) ** 0.5) * np) * ((np + ef) - (ep - np))), (abs((abs((ef - nf)) ** 0.5)) ** 0.5))",30,16.714,13,16.829,exponential
+11,"div(sub(sub(mul(ef, 1), sub(1, ef)), sqrt(sub(nf, nf))), sqrt(add(add(nf, ep), add(ep, nf))))","div((((ef * 1.0) - (1.0 - ef)) - (abs((nf - nf)) ** 0.5)), (abs(((nf + ep) + (ep + nf))) ** 0.5))",31,5.405,17,7.0,exponential
+12,"div(ef, sqrt(div(div(ep, 1), div(ef, 1))))","div(ef, (abs(div(div(ep, 1.0), div(ef, 1.0))) ** 0.5))",30,5.631,15,6.743,exponential
+13,"mul(div(ef, add(div(nf, ef), div(ep, ef))), div(add(add(ep, 1), add(ep, ef)), add(add(1, ep), div(1, ef))))","(div(ef, (div(nf, ef) + div(ep, ef))) * div(((ep + 1.0) + (ep + ef)), ((1.0 + ep) + div(1.0, ef))))",32,4.857,15,6.886,exponential
+14,"add(mul(div(sqrt(1), sub(ef, 1)), add(add(np, nf), ef)), mul(mul(div(ef, ef), add(ef, ef)), mul(div(ef, ef), add(ef, ef))))","((div((abs(1.0) ** 0.5), (ef - 1.0)) * ((np + nf) + ef)) + ((div(ef, ef) * (ef + ef)) * (div(ef, ef) * (ef + ef))))",31,5.06,14,7.0,exponential
+15,"div(mul(div(np, add(1, ep)), div(np, add(nf, ep))), sub(ef, sqrt(nf)))","div((div(np, (1.0 + ep)) * div(np, (nf + ep))), (ef - (abs(nf) ** 0.5)))",32,42.655,12,13.0,exponential
+16,"mul(div(div(np, add(nf, ep)), ep), div(add(sub(ef, 1), sub(ef, nf)), nf))","(div(div(np, (nf + ep)), ep) * div(((ef - 1.0) + (ef - nf)), nf))",32,34.952,14,12.371,exponential
+17,"div(ef, sub(sqrt(add(ep, nf)), div(ep, add(ep, np))))","div(ef, ((abs((ep + nf)) ** 0.5) - div(ep, (ep + np))))",31,4.798,15,6.829,exponential
+18,"mul(add(add(ep, add(ef, ep)), add(ef, add(ep, np))), div(div(mul(ef, 1), add(nf, ep)), sqrt(1)))","(((ep + (ef + ep)) + (ef + (ep + np))) * div(div((ef * 1.0), (nf + ep)), (abs(1.0) ** 0.5)))",31,4.774,15,6.829,exponential
+19,"div(ef, div(sqrt(add(ep, nf)), sqrt(ef)))","div(ef, div((abs((ep + nf)) ** 0.5), (abs(ef) ** 0.5)))",31,5.548,15,7.057,exponential
+20,"mul(mul(div(ef, add(np, ef)), ef), sub(mul(div(ef, ep), 1), div(div(ef, np), add(np, ef))))","((div(ef, (np + ef)) * ef) * ((div(ef, ep) * 1.0) - div(div(ef, np), (np + ef))))",31,7.381,15,7.057,exponential
+21,"add(div(mul(ef, mul(1, np)), 1), div(add(mul(np, nf), ef), sub(mul(1, ef), 1)))","(div((ef * (1.0 * np)), 1.0) + div(((np * nf) + ef), ((1.0 * ef) - 1.0)))",31,6.238,14,10.6,exponential
+22,"mul(sqrt(div(mul(ef, ef), ep)), mul(div(mul(ef, nf), nf), mul(ef, np)))","((abs(div((ef * ef), ep)) ** 0.5) * (div((ef * nf), nf) * (ef * np)))",32,6.095,17,7.429,exponential
+23,"div(mul(add(np, mul(ef, ef)), mul(div(ef, np), 1)), add(ep, nf))","div(((np + (ef * ef)) * (div(ef, np) * 1.0)), (ep + nf))",31,4.786,15,7.343,exponential
+24,"div(div(sqrt(ef), div(1, sqrt(ef))), div(sqrt(ep), sqrt(ef)))","div(div((abs(ef) ** 0.5), div(1.0, (abs(ef) ** 0.5))), div((abs(ep) ** 0.5), (abs(ef) ** 0.5)))",30,5.607,15,6.743,exponential
+25,"mul(add(div(add(1, ef), div(ep, np)), np), add(div(mul(1, ef), 1), ef))","((div((1.0 + ef), div(ep, np)) + np) * (div((1.0 * ef), 1.0) + ef))",30,6.702,15,10.886,exponential
+26,"sub(div(mul(ef, ef), add(ep, nf)), sqrt(add(ef, nf)))","(div((ef * ef), (ep + nf)) - (abs((ef + nf)) ** 0.5))",30,4.857,15,6.829,exponential
+27,"add(mul(div(ef, sqrt(ep)), sqrt(ef)), add(sqrt(div(ef, nf)), sqrt(div(ef, nf))))","((div(ef, (abs(ep) ** 0.5)) * (abs(ef) ** 0.5)) + ((abs(div(ef, nf)) ** 0.5) + (abs(div(ef, nf)) ** 0.5)))",32,6.798,15,6.743,exponential
+28,"add(add(sub(add(nf, np), div(ef, 1)), add(mul(nf, ef), mul(np, ef))), mul(sqrt(mul(ef, 1)), add(mul(np, 1), mul(np, nf))))","((((nf + np) - div(ef, 1.0)) + ((nf * ef) + (np * ef))) + ((abs((ef * 1.0)) ** 0.5) * ((np * 1.0) + (np * nf))))",30,8.131,13,10.6,exponential
+29,"mul(mul(add(nf, 1), mul(mul(np, ef), add(1, 1))), sub(sqrt(mul(np, ef)), nf))",(((nf + 1.0) * ((np * ef) * (1.0 + 1.0))) * ((abs((np * ef)) ** 0.5) - nf)),30,7.393,14,10.2,exponential
